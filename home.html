@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link href="static/homepage.css" rel="stylesheet">
+        <title>homepage: {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="active" href="home">Home</a>
+            <a  href="ask">Ask a question</a>
+            <a href="answer">All questions</a>
+            <a href="logout">Logout</a>
+        </div>
+        <br>
+        <h1>Home</h1>
+        <table class="table1">
+            <thead class="thead1">
+                <tr>
+                    <th>Credits</th>
+                </tr>
+            </thead>
+            <tbody class="tbody1">
+                <tr>
+                    <td>{{ credits }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <div class="questions">
+            <table class="table2">
+                <thead class="thead2">
+                    <tr>
+                        <th>Your questions</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="tbody2">
+                    {% for question in questions %}
+                    <tr>
+                        <td>{{ question.question }}</td>
+                        <form action= '/home', method="post">
+                            <td><button value="{{ question.id }}" name="question_id_answers" class="question_id_answers" type="submit">See all answers</button></td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="answeres">
+            <table class="table3">
+                <thead class="thead3">
+                    <tr>
+                        <th>Your answers</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="tbody3">
+                    {% for answer in answers %}
+                    <tr>
+                        <td>{{ answer.answer }}</td>
+                        <form action= '/home', method="post">
+                            <td><button value="{{ answer.id }}" name="answer_id_answers" class="answern_id_answers" type="submit">See question and other answers</button></td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

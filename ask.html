@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link href="static/ask.css" rel="stylesheet">
+        <title>ask: {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div class="topnav">
+            <a href="home">Home</a>
+            <a class="active" href="ask">Ask a question</a>
+            <a href="answer">All questions</a>
+            <a href="logout">Logout</a>
+        </div>
+        <div class="error">
+            <p>{{ error }}<p>
+        </div>
+        <br>
+        <h1>Ask a question</h1>
+        <br>
+        <br>
+        <br>
+        <form action='/ask' method='post'>
+            <div class="fields">
+                <input name="question" type="text" id="question" placeholder="Enter your question"/>
+                <br>
+                <br>
+                <button id="submit" name="upload">Upload question</button>
+            </div>
+        </form>
+    </body>
+</html>

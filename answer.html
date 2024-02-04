@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link href="static/answer.css" rel="stylesheet">
+        <title>Answer: {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="active" href="home">Home</a>
+            <a  href="ask">Ask a question</a>
+            <a class="active" href="answer">All questions</a>
+            <a href="logout">Logout</a>
+        </div>
+        <br>
+        <h1>All questions</h1>
+        <br>
+        <div class="questions">
+            <table class="table1">
+                <thead class="thead1">
+                    <tr>
+                        <th>Questions</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody1">
+                    {% for question in questions %}
+                    <tr>
+                        <td>{{ question.question }}</td>
+                        <form action = '/answer' method="post">
+                            <td><input name="answer" id="answer" type="text" placeholder="Write answer"></td>
+                            <td><button value="{{ question.id }}" name="question_id" class="question_id" type="submit">Answer the question</button></td>
+                            <td><button value="{{ question.id }}" name="question_id_answers" class="question_id_answers" type="submit">See all answers</button></td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
